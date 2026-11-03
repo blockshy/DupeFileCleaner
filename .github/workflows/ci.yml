@@ -1,0 +1,45 @@
+name: CI
+
+# 普通提交与拉取请求只检查代码；版本发布复用同一套检查，避免两条验证标准分叉。
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      checkout-ref:
+        description: 要验证的不可变提交；省略时使用当前事件的提交。
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: Windows checks
+    runs-on: windows-2022
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      # Action 固定到已核实的提交，版本注释用于方便后续人工升级。
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ inputs.checkout-ref || github.sha }}
+          persist-credentials: false
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
+        with:
+          flutter-version: '3.47.6'
+          channel: stable
+          # 发布检查不依赖跨工作流缓存，始终从固定 SDK 与锁文件建立环境。
+          cache: false
+
+      - name: Analyze, test and build
+        run: ./tool/test_windows.ps1

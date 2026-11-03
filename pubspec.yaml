@@ -1,0 +1,33 @@
+name: dupe_file_cleaner
+description: 安全预览、复核并清理重复文件的 Windows 桌面工具。
+# 本项目作为桌面应用发布，不向 Dart 包仓库发布。
+publish_to: 'none'
+repository: https://github.com/blockshy/DupeFileCleaner
+issue_tracker: https://github.com/blockshy/DupeFileCleaner/issues
+
+# 语义版本用于发布标签；加号后的构建号同时写入 Windows 程序版本信息。
+version: 1.1.1+3
+
+environment:
+  sdk: ^3.13.5
+
+# 应用依赖保持精简；准确解析版本由纳入版本控制的 pubspec.lock 记录。
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  crypto: ^3.0.7
+  path: ^1.9.1
+
+# 集成测试使用自行生成的受控样本，静态检查规则见 analysis_options.yaml。
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  # Material 图标随应用资源一起发布，不依赖网络字体。
+  uses-material-design: true

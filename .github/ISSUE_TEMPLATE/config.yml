@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 使用说明
+    url: https://github.com/blockshy/DupeFileCleaner/blob/main/docs/usage.md
+    about: 查看判重规则、清理方式、计划与日志及常见问题。
+  - name: 安全问题
+    url: https://github.com/blockshy/DupeFileCleaner/blob/main/SECURITY.md
+    about: 请按安全说明报告潜在的数据丢失或漏洞问题。

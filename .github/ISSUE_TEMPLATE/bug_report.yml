@@ -1,0 +1,40 @@
+name: 问题反馈
+description: 报告可以复现的功能、界面或文件操作问题。
+title: '[Bug] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先查看使用说明及已存在的问题。请移除日志、截图中的个人路径、文件内容及其他敏感信息；文件丢失或安全漏洞请遵循 SECURITY.md 的报告方式。
+  - type: input
+    id: version
+    attributes:
+      label: 程序版本
+      placeholder: 例如 1.1.1
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 版本
+      placeholder: 例如 Windows 11 x64
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 使用虚构文件名和最小样本描述操作步骤。
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期行为与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 错误信息或截图
+      description: 可提供已经移除个人信息的错误原因；无需上传真实待清理文件。

@@ -1,0 +1,8 @@
+# 统一源码换行；图片及可执行资源保持二进制原样。
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.jpg binary
+*.zip binary
+# 第三方许可文本保留上游空白，不将其作为项目源码的空白错误处理。
+docs/licenses/*.txt -whitespace
